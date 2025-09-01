@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/Core/Widgets/Custom_Button.dart';
 import 'package:notes_app/Features/Home/presentation/Views/Widgets/Custom_Text_Filed.dart';
 
 class CustomModelButtonSheet extends StatelessWidget {
@@ -15,6 +16,8 @@ class CustomModelButtonSheet extends StatelessWidget {
             CustomTextFiled(hint: "Title"),
             const SizedBox(height: 20),
             CustomTextFiled(hint: "content", maxlines: 4),
+            Spacer(),
+            CustomElevatedButton(),
           ],
         ),
       ),
