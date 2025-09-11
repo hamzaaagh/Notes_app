@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/Core/consts.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({super.key});
-
+  const CustomElevatedButton({super.key, this.onTap});
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 40,
