@@ -27,8 +27,8 @@ class CustomModelButtonSheet extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return ModalProgressHUD(
-                inAsyncCall: state is Addloading ? true : false,
+              return AbsorbPointer(
+                absorbing: state is Addloading ? true : false,
                 child: Addfrombuttunsheet(),
               );
             },
@@ -52,44 +52,52 @@ class _AddfrombuttunsheetState extends State<Addfrombuttunsheet> {
   String? title, content;
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formkey,
-      autovalidateMode: autovalidate,
-      child: Column(
-        children: [
-          CustomTextFiled(
-            hint: "Title",
-            onsaved: (value) {
-              title = value;
-            },
-          ),
-          const SizedBox(height: 20),
-          CustomTextFiled(
-            hint: "content",
-            maxlines: 4,
-            onsaved: (value) {
-              content = value;
-            },
-          ),
-          Spacer(),
-          CustomElevatedButton(
-            onTap: () {
-              if (formkey.currentState!.validate()) {
-                formkey.currentState!.save();
-                var note = NoteModel(
-                  title: title!,
-                  subtitle: content!,
-                  date: DateTime.now().toString(),
-                  color: Colors.amber.value,
-                );
-                BlocProvider.of<AddNoteCubit>(context).add(note);
-              } else {
-                autovalidate = AutovalidateMode.always;
-                setState(() {});
-              }
-            },
-          ),
-        ],
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: Form(
+        key: formkey,
+        autovalidateMode: autovalidate,
+        child: Column(
+          children: [
+            CustomTextFiled(
+              hint: "Title",
+              onsaved: (value) {
+                title = value;
+              },
+            ),
+            const SizedBox(height: 20),
+            CustomTextFiled(
+              hint: "content",
+              maxlines: 4,
+              onsaved: (value) {
+                content = value;
+              },
+            ),
+            Spacer(),
+            BlocBuilder<AddNoteCubit, AddNoteState>(
+              builder:
+                  (context, state) => CustomElevatedButton(
+                    isloading: state is Addloading ? true : false,
+
+                    onTap: () {
+                      if (formkey.currentState!.validate()) {
+                        formkey.currentState!.save();
+                        var note = NoteModel(
+                          title: title!,
+                          subtitle: content!,
+                          date: DateTime.now().toString(),
+                          color: Colors.amber.value,
+                        );
+                        BlocProvider.of<AddNoteCubit>(context).add(note);
+                      } else {
+                        autovalidate = AutovalidateMode.always;
+                        setState(() {});
+                      }
+                    },
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }
