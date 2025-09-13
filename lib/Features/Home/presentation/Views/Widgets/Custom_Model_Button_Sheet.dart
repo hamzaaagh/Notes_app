@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/Core/Widgets/Custom_Button.dart';
+import 'package:notes_app/Features/Home/presentation/Manager/Add_note_cubit/Add_note_cubit.dart';
+import 'package:notes_app/Features/Home/presentation/Manager/Add_note_cubit/Add_note_state.dart';
 import 'package:notes_app/Features/Home/presentation/Views/Widgets/Custom_Text_Filed.dart';
 
 class CustomModelButtonSheet extends StatelessWidget {
@@ -11,7 +15,19 @@ class CustomModelButtonSheet extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 3.5 / 4,
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Addfrombuttunsheet(),
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
+          listener: (context, state) {
+            if (state is Addsucess) {
+              Navigator.pop(context);
+            } else if (state is Addfailure) {}
+          },
+          builder: (context, state) {
+            return ModalProgressHUD(
+              inAsyncCall: state is Addloading ? true : false,
+              child: Addfrombuttunsheet(),
+            );
+          },
+        ),
       ),
     );
   }
