@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/Core/Widgets/Custom_Button.dart';
+import 'package:notes_app/Features/Home/data/Models/note.dart';
 import 'package:notes_app/Features/Home/presentation/Manager/Add_note_cubit/Add_note_cubit.dart';
 import 'package:notes_app/Features/Home/presentation/Manager/Add_note_cubit/Add_note_state.dart';
 import 'package:notes_app/Features/Home/presentation/Views/Widgets/Custom_Text_Filed.dart';
@@ -72,6 +73,13 @@ class _AddfrombuttunsheetState extends State<Addfrombuttunsheet> {
             onTap: () {
               if (formkey.currentState!.validate()) {
                 formkey.currentState!.save();
+                var note = NoteModel(
+                  title: title!,
+                  subtitle: content!,
+                  date: DateTime.now().toString(),
+                  color: Colors.amber.value,
+                );
+                BlocProvider.of<AddNoteCubit>(context).add(note);
               } else {
                 autovalidate = AutovalidateMode.always;
                 setState(() {});
