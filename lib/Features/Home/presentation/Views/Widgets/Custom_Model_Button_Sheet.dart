@@ -19,7 +19,9 @@ class CustomModelButtonSheet extends StatelessWidget {
           listener: (context, state) {
             if (state is Addsucess) {
               Navigator.pop(context);
-            } else if (state is Addfailure) {}
+            } else if (state is Addfailure) {
+              print('failed');
+            }
           },
           builder: (context, state) {
             return ModalProgressHUD(
