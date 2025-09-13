@@ -12,24 +12,27 @@ class CustomModelButtonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 3.5 / 4,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (state is Addsucess) {
-              Navigator.pop(context);
-            } else if (state is Addfailure) {
-              print('failed');
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is Addloading ? true : false,
-              child: Addfrombuttunsheet(),
-            );
-          },
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 3.5 / 4,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: BlocConsumer<AddNoteCubit, AddNoteState>(
+            listener: (context, state) {
+              if (state is Addsucess) {
+                Navigator.pop(context);
+              } else if (state is Addfailure) {
+                print('failed');
+              }
+            },
+            builder: (context, state) {
+              return ModalProgressHUD(
+                inAsyncCall: state is Addloading ? true : false,
+                child: Addfrombuttunsheet(),
+              );
+            },
+          ),
         ),
       ),
     );
