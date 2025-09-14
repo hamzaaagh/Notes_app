@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
 import 'package:notes_app/Core/Widgets/Custom_Button.dart';
 import 'package:notes_app/Features/Home/data/Models/note.dart';
 import 'package:notes_app/Features/Home/presentation/Manager/Add_note_cubit/Add_note_cubit.dart';
@@ -17,7 +17,12 @@ class CustomModelButtonSheet extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 3.5 / 4,
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.only(
+            right: 16,
+            left: 16,
+            top: 16,
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           child: BlocConsumer<AddNoteCubit, AddNoteState>(
             listener: (context, state) {
               if (state is Addsucess) {

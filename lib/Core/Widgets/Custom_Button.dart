@@ -9,29 +9,32 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          color: kprimarycolor,
-        ),
-        child: Center(
-          child:
-              isloading
-                  ? SizedBox(
-                    height: 20,
-                    width: 20,
-                    child: CircularProgressIndicator(color: Colors.black),
-                  )
-                  : Text(
-                    "Add",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: 40,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: kprimarycolor,
+          ),
+          child: Center(
+            child:
+                isloading
+                    ? SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(color: Colors.black),
+                    )
+                    : Text(
+                      "Add",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
+          ),
         ),
       ),
     );
