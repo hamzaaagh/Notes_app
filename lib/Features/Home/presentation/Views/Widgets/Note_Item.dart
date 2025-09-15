@@ -72,7 +72,10 @@ class NoteItem extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 20),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            note.delete();
+                            BlocProvider.of<NoteCubit>(context).fetchallnotes();
+                          },
                           child: Icon(
                             Icons.delete,
                             color: Colors.black,

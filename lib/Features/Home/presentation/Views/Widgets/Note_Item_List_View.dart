@@ -20,11 +20,12 @@ class NoteItemListView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    List<NoteModel> notes = BlocProvider.of<NoteCubit>(context).fetchallnotes();
     return BlocBuilder<NoteCubit, NoteState>(
       builder: (context, state) {
+        List<NoteModel> notes = BlocProvider.of<NoteCubit>(context).notes ?? [];
+
         return ListView.builder(
-          itemCount: BlocProvider.of<NoteCubit>(context).fetchallnotes().length,
+          itemCount: notes.length,
           itemBuilder: (context, index) {
             final loopedIndex = index % colors.length;
             return NoteItem(color: colors[loopedIndex], note: notes[index]);
