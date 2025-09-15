@@ -6,9 +6,10 @@ import 'package:notes_app/Features/Home/presentation/Manager/Note_Cubit/Note_Sta
 
 class NoteCubit extends Cubit<NoteState> {
   NoteCubit() : super(NoteInitial());
-  List<NoteModel> fetchallnotes() {
+  List<NoteModel>? notes;
+  fetchallnotes() {
     var notesbox = Hive.box<NoteModel>(kNotesBox);
-    List<NoteModel> notes = notesbox.values.toList();
-    return notes;
+    notes = notesbox.values.toList();
+    emit(NoteSucces());
   }
 }

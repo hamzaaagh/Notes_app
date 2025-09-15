@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Features/Home/presentation/Manager/Note_Cubit/Note_Cubit.dart';
 import 'package:notes_app/Features/Home/presentation/Views/Widgets/Custom_App_Bar.dart';
 
 import 'package:notes_app/Features/Home/presentation/Views/Widgets/Note_Item_List_View.dart';
@@ -8,6 +10,7 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<NoteCubit>(context).fetchallnotes();
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
