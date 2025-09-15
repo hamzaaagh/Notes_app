@@ -15,7 +15,7 @@ class CustomModelButtonSheet extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddNoteCubit(),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 3.5 / 4,
+        height: MediaQuery.of(context).size.height * 2 / 4,
         child: Padding(
           padding: EdgeInsets.only(
             right: 16,
@@ -94,6 +94,7 @@ class _AddfrombuttunsheetState extends State<Addfrombuttunsheet> {
                           color: Colors.amber.value,
                         );
                         BlocProvider.of<AddNoteCubit>(context).add(note);
+                        Navigator.pop(context);
                       } else {
                         autovalidate = AutovalidateMode.always;
                         setState(() {});
