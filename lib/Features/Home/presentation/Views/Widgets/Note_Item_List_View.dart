@@ -13,7 +13,7 @@ class NoteItemListView extends StatelessWidget {
     Color(0xFFE8F5E9),
     Color(0xFFFFF9C4),
     Color(0xFFF3E5F5),
-    Color(0xFFE0F7FA),
+    Color(0xFFE0F7F2),
     Color(0xFFFFF3E0),
     Color(0xFFEDE7F6),
     Color(0xFFFFEBEE),
@@ -23,7 +23,6 @@ class NoteItemListView extends StatelessWidget {
     return BlocBuilder<NoteCubit, NoteState>(
       builder: (context, state) {
         List<NoteModel> notes = BlocProvider.of<NoteCubit>(context).notes ?? [];
-
         return ListView.builder(
           itemCount: notes.length,
           itemBuilder: (context, index) {
