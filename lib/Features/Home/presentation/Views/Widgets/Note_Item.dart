@@ -19,7 +19,7 @@ class NoteItem extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (builder) {
-                  return NoteEditView(note: note);
+                  return NoteEditView(note: note, color: color);
                 },
               ),
             );

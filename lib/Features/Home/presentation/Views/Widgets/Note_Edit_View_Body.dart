@@ -6,8 +6,9 @@ import 'package:notes_app/Features/Home/presentation/Views/Widgets/Custom_App_Ba
 import 'package:notes_app/Features/Home/presentation/Views/Widgets/Custom_Text_Filed.dart';
 
 class NoteEditViewBody extends StatefulWidget {
-  const NoteEditViewBody({super.key, required this.note});
+  const NoteEditViewBody({super.key, required this.note, required this.color});
   final NoteModel note;
+  final Color color;
 
   @override
   State<NoteEditViewBody> createState() => _NoteEditViewBodyState();
