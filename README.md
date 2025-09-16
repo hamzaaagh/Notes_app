@@ -1,16 +1,20 @@
-# notes_app
+# 📝 Note App
 
-A new Flutter project.
+A simple and clean note-taking application built with **Flutter**.  
+This app follows **MVVM architecture** with **Cubit state management** and uses **Hive** for local data storage.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
+- Add new notes  
+- Edit existing notes  
+- Delete notes  
+- Persistent storage with **Hive**  
+- Clean and minimal user interface  
+- Built with **MVVM + Cubit + Clean Architecture** principles  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 📂 Project Structure
+The app is structured using **Clean Architecture** and **MVVM**:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
